@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🗼 Lighthouse Keeper Log</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🗼 Lighthouse Keeper Log</h1>
+        <p>Maritime Safety & Weather Monitoring</p>
+      </header>
+
+      <!-- Log Entry Form -->
+      <section class="log-section">
+        <h2>📝 New Log Entry</h2>
+        <form id="logForm">
+          <div class="form-group">
+            <label>Lighthouse:</label>
+            <input
+              type="text"
+              id="lighthouse"
+              placeholder="Cape Hatteras"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Visibility (NM):</label>
+              <input
+                type="number"
+                id="visibility"
+                step="0.1"
+                min="0"
+                max="30"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Wind (knots):</label>
+              <input type="number" id="windSpeed" min="0" max="100" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Fog:</label>
+              <input type="checkbox" id="fog" />
+            </div>
+            <div class="form-group">
+              <label>Keeper:</label>
+              <input type="text" id="keeper" placeholder="John Doe" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Notes:</label>
+            <textarea
+              id="notes"
+              rows="2"
+              placeholder="Sea state, distress signals..."
+            ></textarea>
+          </div>
+          <button type="submit">🚀 Submit Log</button>
+        </form>
+        <div id="logResult"></div>
+      </section>
+
+      <!-- Quick Stats -->
+      <section class="stats-grid">
+        <div class="stat-card" id="healthCard">
+          <h3>API Status</h3>
+          <div class="status loading">Checking...</div>
+        </div>
+        <div class="stat-card" id="alertsCard">
+          <h3>🚨 Active Alerts</h3>
+          <span class="alert-count">0</span>
+        </div>
+      </section>
+
+      <!-- Recent Logs -->
+      <section class="logs-section">
+        <h2>
+          📊 Recent Logs - <span id="currentLighthouse">Cape Hatteras</span>
+        </h2>
+        <div class="controls">
+          <input
+            type="text"
+            id="lighthouseSelect"
+            placeholder="Enter lighthouse name"
+            value="Cape Hatteras"
+          />
+          <button onclick="loadLogs()">🔄 Refresh</button>
+        </div>
+        <div id="logsContainer" class="logs-container">
+          <div class="no-data">Enter lighthouse name and click Refresh</div>
+        </div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
